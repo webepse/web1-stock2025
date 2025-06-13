@@ -21,6 +21,11 @@
                 {
                     echo "<div class='alert alert-success my-2'>Vous avez bien ajouté un nouveau membre au site</div>";
                 }
+
+            if(isset($_GET['update']))
+            {
+                echo "<div class='alert alert-warning'>Vous avez bien modifié le membre id° ".$_GET['update']."</div>";
+            }
         ?>
         <table class="table table-striped">
             <thead>
@@ -39,8 +44,8 @@
                             echo "<td>".$don['id']."</td>";
                             echo "<td>".$don['login']."</td>";
                             echo "<td>";
-                                echo "<a href='updateMember.php?id=' class='btn btn-warning'>Modifier</a>";
-                                echo "<a href='members.php?delete=' class='btn btn-danger mx-2'>Supprimer</a>";
+                                echo "<a href='updateMember.php?id=".$don['id']."' class='btn btn-warning'>Modifier</a>";
+                                echo "<a href='members.php?delete=".$don['id']."' class='btn btn-danger mx-2'>Supprimer</a>";
                             echo "</td>";
                         echo "</tr>";
                     }

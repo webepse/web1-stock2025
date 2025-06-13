@@ -35,7 +35,7 @@ if(isset($_POST['login']))
             ":pass" => $hash
         ]);
         header("LOCATION:members.php?add=success");
-
+        exit();
     }else{
         header("LOCATION:addMember.php?error=".$err);
         exit();
