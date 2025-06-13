@@ -1,5 +1,24 @@
 <?php
     require "connexion.php";
+
+    if(isset($_GET['delete']) && is_numeric($_GET['delete']))
+    {
+        $id = htmlspecialchars($_GET['delete']);
+        $verif = $bdd->prepare("SELECT * FROM members WHERE id=?");
+        $verif->execute([$id]);
+        if(!$don = $verif->fetch())
+        {
+            header("LOCATION:404.php");
+            exit();
+        }
+
+        $delete = $bdd->prepare("DELETE FROM members WHERE id=?");
+        $delete->execute([$id]);
+        header("LOCATION:members.php?mydelete=".$id);
+        exit();
+    }
+
+
 ?>
 
 <!DOCTYPE html>
@@ -26,6 +45,11 @@
             {
                 echo "<div class='alert alert-warning'>Vous avez bien modifié le membre id° ".$_GET['update']."</div>";
             }
+
+             if(isset($_GET['mydelete']))
+                {
+                    echo "<div class='alert alert-danger my-2'>Vous avez bien supprimé  le membre id° ".$_GET['mydelete']."</div>";
+                }
         ?>
         <table class="table table-striped">
             <thead>
