@@ -13,7 +13,7 @@
                     <a class="nav-link" href="members.php">Membres</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="stocks.php">Stocks</a>
+                    <a class="nav-link" href="products.php">Produits</a>
                 </li>
             </ul>
             <span>
