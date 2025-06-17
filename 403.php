@@ -9,8 +9,8 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <a href="admin/" class="btn btn-success">Admin</a>
-    </div>
+<div class="container">
+    <h2>Vous n'avez pas accès à cette ressource</h2>
+</div>
 </body>
 </html>
