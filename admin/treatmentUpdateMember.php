@@ -15,6 +15,9 @@ if(isset($_GET['id']))
 }
 
 require "../connexion.php";
+/**
+ * @var PDO $bdd
+ */
 $req = $bdd->prepare("SELECT * FROM members WHERE id=?");
 $req->execute([$id]);
 if(!$don = $req->fetch())

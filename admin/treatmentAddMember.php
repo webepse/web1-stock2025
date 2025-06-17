@@ -17,6 +17,9 @@ if(isset($_POST['login']))
     }else{
         $login = htmlspecialchars($_POST['login']);
         require "../connexion.php";
+        /**
+         * @var PDO $bdd
+         */
         $verif = $bdd->prepare("SELECT * FROM members WHERE login=?");
         $verif->execute([$login]);
         $donVerif = $verif->fetch();

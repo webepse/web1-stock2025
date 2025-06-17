@@ -7,6 +7,9 @@
     }
 
     require "../connexion.php";
+    /**
+     * @var PDO $bdd
+     */
 
     if(isset($_GET['delete']) && is_numeric($_GET['delete']))
     {
@@ -21,10 +24,7 @@
                 $delete = $bdd->prepare("DELETE FROM members WHERE id=?");
                 $delete->execute([$id]);
                 $success = $id;
-/*                header("LOCATION:members.php?mydelete=".$id);
-                exit();*/
             }
-
         }else{
             $erreur = "Vous ne pouvez pas supprimer cet utilisateur";
         }
