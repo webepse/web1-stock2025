@@ -6,6 +6,12 @@ if(!isset($_SESSION['login'])){
     exit();
 }
 
+if(isset($_GET['deco']))
+{
+    session_destroy();
+    header("LOCATION:index.php");
+    exit();
+}
 
 
 ?>
@@ -24,9 +30,17 @@ if(!isset($_SESSION['login'])){
     <title>Administration - Stock 2025</title>
 </head>
 <body>
+<?php
+    include("partials/header.php");
+
+?>
 <div class="container">
     <h2>Tableau de bord</h2>
 </div>
 
+<?php
+include("partials/footer.php");
+
+?>
 </body>
 </html>

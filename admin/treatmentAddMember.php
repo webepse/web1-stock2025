@@ -1,4 +1,11 @@
 <?php
+session_start();
+// vérifier que l'utilisateur est en SESSION
+if(!isset($_SESSION['login'])){
+    header("LOCATION:../403.php");
+    exit();
+}
+
 
 if(isset($_POST['login']))
 {
@@ -9,7 +16,7 @@ if(isset($_POST['login']))
         $err = 1;
     }else{
         $login = htmlspecialchars($_POST['login']);
-        require "connexion.php";
+        require "../connexion.php";
         $verif = $bdd->prepare("SELECT * FROM members WHERE login=?");
         $verif->execute([$login]);
         $donVerif = $verif->fetch();

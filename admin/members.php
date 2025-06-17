@@ -1,21 +1,33 @@
 <?php
-    require "connexion.php";
+    session_start();
+    // vérifier que l'utilisateur est en SESSION
+    if(!isset($_SESSION['login'])){
+        header("LOCATION:../403.php");
+        exit();
+    }
+
+    require "../connexion.php";
 
     if(isset($_GET['delete']) && is_numeric($_GET['delete']))
     {
         $id = htmlspecialchars($_GET['delete']);
-        $verif = $bdd->prepare("SELECT * FROM members WHERE id=?");
-        $verif->execute([$id]);
-        if(!$don = $verif->fetch())
-        {
-            header("LOCATION:404.php");
-            exit();
-        }
+        if($id != $_SESSION['id'] && $id != 1){
+            $verif = $bdd->prepare("SELECT * FROM members WHERE id=?");
+            $verif->execute([$id]);
+            if(!$don = $verif->fetch())
+            {
+               $erreur = "Le membre n'existe pas";
+            }else{
+                $delete = $bdd->prepare("DELETE FROM members WHERE id=?");
+                $delete->execute([$id]);
+                $success = $id;
+/*                header("LOCATION:members.php?mydelete=".$id);
+                exit();*/
+            }
 
-        $delete = $bdd->prepare("DELETE FROM members WHERE id=?");
-        $delete->execute([$id]);
-        header("LOCATION:members.php?mydelete=".$id);
-        exit();
+        }else{
+            $erreur = "Vous ne pouvez pas supprimer cet utilisateur";
+        }
     }
 
 
@@ -46,10 +58,15 @@
                 echo "<div class='alert alert-warning'>Vous avez bien modifié le membre id° ".$_GET['update']."</div>";
             }
 
-             if(isset($_GET['mydelete']))
+             if(isset($success))
                 {
-                    echo "<div class='alert alert-danger my-2'>Vous avez bien supprimé  le membre id° ".$_GET['mydelete']."</div>";
+                    echo "<div class='alert alert-danger my-2'>Vous avez bien supprimé  le membre id° ".$success."</div>";
                 }
+
+             if(isset($erreur))
+             {
+                 echo "<div class='alert alert-danger my-2'>".$erreur."</div>";
+             }
         ?>
         <table class="table table-striped">
             <thead>

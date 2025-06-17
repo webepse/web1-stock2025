@@ -1,4 +1,11 @@
 <?php
+session_start();
+// vérifier que l'utilisateur est en SESSION
+if(!isset($_SESSION['login'])){
+    header("LOCATION:../403.php");
+    exit();
+}
+
     if(isset($_GET['id']))
     {
         $id = htmlspecialchars($_GET['id']);
@@ -7,7 +14,7 @@
         exit();
     }
 
-    require "connexion.php";
+    require "../connexion.php";
     $req = $bdd->prepare("SELECT * FROM members WHERE id=?");
     $req->execute([$id]);
     if(!$don = $req->fetch())

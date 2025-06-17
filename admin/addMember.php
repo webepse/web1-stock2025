@@ -1,3 +1,12 @@
+<?php
+session_start();
+// vérifier que l'utilisateur est en SESSION
+if(!isset($_SESSION['login'])){
+    header("LOCATION:../403.php");
+    exit();
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
