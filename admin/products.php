@@ -69,19 +69,19 @@ if(isset($_GET['delete']) && is_numeric($_GET['delete']))
         </thead>
         <tbody>
         <?php
-        $req = $bdd->query("SELECT * FROM products");
+        $req = $bdd->query("SELECT products.nom AS pnom, categories.nom AS cnom, DATE_FORMAT(products.date, '%d/%m/%Y') AS mydate, products.price AS prix, members.login AS login, members.id AS mid, products.id AS pid FROM products INNER JOIN categories ON products.id_category = categories.id INNER JOIN members ON products.id_member = members.id");
         while($don = $req->fetch())
         {
             echo "<tr>";
-            echo "<td>".$don['id']."</td>";
-            echo "<td>".$don['id_category']."</td>";
-            echo "<td>".$don['nom']."</td>";
-            echo "<td>".$don['date']."</td>";
-            echo "<td>".$don['price']."€</td>";
-            echo "<td>".$don['id_member']."</td>";
+            echo "<td>".$don['pid']."</td>";
+            echo "<td>".$don['cnom']."</td>";
+            echo "<td>".$don['pnom']."</td>";
+            echo "<td>".$don['mydate']."</td>";
+            echo "<td>".$don['prix']."€</td>";
+            echo "<td>".$don['login']."</td>";
             echo "<td>";
-            echo "<a href='updateProduct.php?id=".$don['id']."' class='btn btn-warning'>Modifier</a>";
-            echo "<a href='products.php?delete=".$don['id']."' class='btn btn-danger mx-2'>Supprimer</a>";
+            echo "<a href='updateProduct.php?id=".$don['pid']."' class='btn btn-warning'>Modifier</a>";
+            echo "<a href='products.php?delete=".$don['pid']."' class='btn btn-danger mx-2'>Supprimer</a>";
             echo "</td>";
             echo "</tr>";
         }
