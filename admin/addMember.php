@@ -18,6 +18,9 @@ if(!isset($_SESSION['login'])){
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<?php
+ include("partials/header.php");
+?>
     <div class="container">
         <h1>Ajouter un nouveau membre</h1>
         <a href="members.php" class="btn btn-secondary my-4">Retour</a>
@@ -44,5 +47,8 @@ if(!isset($_SESSION['login'])){
             <input type="submit" value="Ajouter" class="btn btn-success">
         </form>
     </div>
+<?php
+include("partials/footer.php");
+?>
 </body>
 </html>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : mar. 17 juin 2025 à 12:53
+-- Généré le : mar. 17 juin 2025 à 13:23
 -- Version du serveur : 9.1.0
 -- Version de PHP : 8.3.14
 
@@ -34,7 +34,14 @@ CREATE TABLE IF NOT EXISTS `categories` (
   `id` int NOT NULL AUTO_INCREMENT,
   `nom` varchar(60) COLLATE utf8mb4_general_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `categories`
+--
+
+INSERT INTO `categories` (`id`, `nom`) VALUES
+(1, 'Catégorie Test 1');
 
 -- --------------------------------------------------------
 
@@ -93,7 +100,14 @@ CREATE TABLE IF NOT EXISTS `products` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_member` (`id_member`),
   KEY `id_category` (`id_category`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `products`
+--
+
+INSERT INTO `products` (`id`, `nom`, `description`, `date`, `price`, `cover`, `id_category`, `id_member`) VALUES
+(1, 'produit 1', 'une petite description', '2025-06-16', 50.00, 'image.jpg', 1, 1);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

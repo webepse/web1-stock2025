@@ -86,6 +86,6 @@ if(isset($_POST['login']))
 
 
 }else{
-    header("LOCATION:addMember.php");
+    header("LOCATION:../403.php");
     exit();
 }

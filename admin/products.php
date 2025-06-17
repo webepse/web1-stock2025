@@ -31,6 +31,9 @@ if(isset($_GET['delete']) && is_numeric($_GET['delete']))
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<?php
+    include("partials/header.php");
+?>
 <div class="container">
     <h1>Les produits du site</h1>
     <a href="addProduct.php" class="btn btn-primary my-4">Ajouter un produit</a>
@@ -73,16 +76,16 @@ if(isset($_GET['delete']) && is_numeric($_GET['delete']))
         while($don = $req->fetch())
         {
             echo "<tr>";
-            echo "<td>".$don['pid']."</td>";
-            echo "<td>".$don['cnom']."</td>";
-            echo "<td>".$don['pnom']."</td>";
-            echo "<td>".$don['mydate']."</td>";
-            echo "<td>".$don['prix']."€</td>";
-            echo "<td>".$don['login']."</td>";
-            echo "<td>";
-            echo "<a href='updateProduct.php?id=".$don['pid']."' class='btn btn-warning'>Modifier</a>";
-            echo "<a href='products.php?delete=".$don['pid']."' class='btn btn-danger mx-2'>Supprimer</a>";
-            echo "</td>";
+                echo "<td>".$don['pid']."</td>";
+                echo "<td>".$don['cnom']."</td>";
+                echo "<td>".$don['pnom']."</td>";
+                echo "<td>".$don['mydate']."</td>";
+                echo "<td>".$don['prix']."€</td>";
+                echo "<td>".$don['login']."</td>";
+                echo "<td>";
+                    echo "<a href='updateProduct.php?id=".$don['pid']."' class='btn btn-warning'>Modifier</a>";
+                    echo "<a href='products.php?delete=".$don['pid']."' class='btn btn-danger mx-2'>Supprimer</a>";
+                echo "</td>";
             echo "</tr>";
         }
         $req->closeCursor();
@@ -90,5 +93,8 @@ if(isset($_GET['delete']) && is_numeric($_GET['delete']))
         </tbody>
     </table>
 </div>
+<?php
+    include("partials/footer.php");
+?>
 </body>
 </html>

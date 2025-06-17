@@ -44,6 +44,9 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<?php
+    include("partials/header.php");
+?>
     <div class="container">
         <h1>Les membres du site</h1>
         <a href="addMember.php" class="btn btn-primary my-4">Ajouter un membre</a>
@@ -95,5 +98,8 @@
             </tbody>    
         </table>
     </div>
+<?php
+include("partials/footer.php");
+?>
 </body>
 </html>
